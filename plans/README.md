@@ -1,0 +1,7 @@
+# Plans
+
+Iteration plans for **showcase**, authored by the auto-pi PM persona.
+
+| Slice | Status | Summary |
+|-------|--------|---------|
+| [`slice-01.md`](slice-01.md) | Planned | Showcase engine core (`src/core`), thin UI + sample showcases, demo/packaging prep |

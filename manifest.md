@@ -13,6 +13,22 @@ Implement a new project called Showcase, it's a lightweight alternative to Story
 - Keep all business logic in `src/core` with 100% test coverage.
 - Keep the UI layer thin and free of business logic.
 
+## Product shape
+
+Showcase is a lightweight, Storybook-like component gallery: a registry of
+showcase "files" (each with a `meta` name and several variant components), a
+sidebar that groups files and lists variants, a canvas that renders the selected
+variant, and URL deep-linking (`?file=..&showcase=..`) so selections are
+shareable and navigable. The engine lives in `src/core` (pure, router-agnostic);
+the UI is a thin view. Reference/most-recent implementation:
+`ws/natalies-corner/web/src/showcase/`.
+
+## Active plan
+
+See [`plans/slice-01.md`](plans/slice-01.md) — the current slice implementing the
+showcase engine core, a thin demo UI with sample showcases, and demo/packaging
+prep.
+
 ## Non-goals (initial slice)
 
 - Anything beyond the minimal viable slice needed for a live demo.
