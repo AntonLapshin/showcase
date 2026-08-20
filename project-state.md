@@ -19,6 +19,8 @@ in place and `npm install && npm test && npm run build` pass. The next slice
 
 ## Next slice — Slice 01 (see `plans/slice-01.md`)
 
+> Implementation-ready. Latest PM notes: `plans/PM-notes.md`.
+
 Extract a lightweight, Storybook-like component gallery from
 `ws/natalies-corner/web/src/showcase` into this standalone package:
 
@@ -29,6 +31,17 @@ Extract a lightweight, Storybook-like component gallery from
 - [ ] Demo polish + README (usage + "add a showcase") + library-entry prep in
       `package.json`.
 
+## CI / Pages status
+
+- ✅ CI green on `main` (`13924d0`): lint, test:coverage (100% core), and build
+  all pass in CI.
+- 🚧 GitHub Pages deploy is **failing** — `actions/configure-pages` reports
+  "Pages site not found / your current plan does not support GitHub Pages for
+  this repository." The repo is **private** with Pages **not enabled**.
+  **Blocked on human action**: enable Pages in repo Settings → Pages, or make
+  the repo public. See `plans/PM-notes.md`.
+
 ## Done
 
 - [x] `npm install && npm test && npm run build` pass locally (baseline verified).
+- [x] `npm install && npm test && npm run build` pass in CI (`ci.yml`).
