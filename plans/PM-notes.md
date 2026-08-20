@@ -126,3 +126,52 @@ incrementally so each merged PR keeps CI green.
   blocker to scope done** for Slice 01.
 - GitHub Pages demo still human-blocked (private repo / Pages disabled).
 - npm publishing still deferred to the human.
+
+---
+
+## Cycle 2026-08-20 (run pm-20260820-190405-4d08cc8e) — re-dispatch
+
+### This dispatch
+
+Dispatched `pm` with reason "no ready work; 3 open issue(s) remain unplanned".
+Re-scan confirmed the three Slice 01 issues (#1 core engine, #2 thin UI, #3
+demo/packaging prep) were **open but unlabeled** — they had **no** `pi:ready`
+flag, no size/type/milestone labels, and no `pi:issue-id` marker, so the
+Engineer dispatcher had no `pi:ready` issue to pick up. That is the actual
+"no ready work" signal.
+
+### Decision / action (unblock the team)
+
+No new issues were authored — the Slice 01 plan is the ground truth and
+remains unchanged. The open issues were already the implementation-ready plan;
+they just needed to be made dispatchable. So I:
+
+- Created the pi labels: `pi:ready`, `size:xs`, `size:s`, `type:feature`,
+  `milestone:m1`.
+- Added idempotency markers `<!-- pi:issue-id M1-Tx -->` to each body:
+  **#1 = M1-T1**, **#2 = M1-T2**, **#3 = M1-T3**.
+- Applied labels:
+  - #1 core engine → `pi:ready,size:s,type:feature,milestone:m1`
+  - #2 thin UI + view model + URL sync → `pi:ready,size:s,type:feature,milestone:m1`
+  - #3 demo polish + README + packaging prep → `pi:ready,size:xs,type:feature,milestone:m1`
+- Updated `project-state.md` and pushed.
+
+### Ready-to-pick-up (for the dev persona, batch order)
+
+1. Issue **#1** — core showcase engine (`src/core`): registry, selection,
+   expand/collapse, URL (de)serialize. Pure TS, 100% coverage (gate already in
+   `vite.config.ts`).
+2. Issue **#2** — thin showcase UI + `useShowcase` view model + `window.history`
+   URL sync + 2–3 sample showcase files. Depends on #1's core API.
+3. Issue **#3** — demo root swap (drop `DemoPanel`), README usage + "add a
+   showcase" + live-demo link, and `package.json` library-entry prep (no
+   publish). Depends on #2.
+
+Sequential order matters (#1 → #2 → #3); branch per issue and merge
+incrementally so each merged PR keeps CI green.
+
+### Not done this cycle
+
+- Slice 01 still not implemented (issues open, no PRs) — awaiting Engineer.
+- GitHub Pages demo still human-blocked (private repo / Pages not enabled).
+- npm publishing still deferred to the human.
