@@ -35,6 +35,17 @@ prep.
 
 ## Success criteria
 
-- [ ] `npm install && npm test && npm run build` pass in CI.
-- [ ] A live demo is deployed to GitHub Pages.
-- [ ] `src/core/**` holds 100% test coverage.
+- [x] `npm install && npm test && npm run build` pass in CI (verified green on
+      `main`, e.g. `13924d0`).
+- [ ] A live demo is deployed to GitHub Pages — **blocked on human action**:
+      repo is private and Pages not enabled; the owner must enable Pages (or
+      make the repo public) before `deploy-pages.yml` can succeed. See
+      `plans/PM-notes.md`.
+- [x] `src/core/**` holds 100% test coverage (gate in `vite.config.ts`; green in
+      CI and locally).
+
+## Progress check (Slice 01)
+
+- Issues reflect the plan: **#1** core engine, **#2** thin UI, **#3** demo +
+  packaging prep — all open, batched, ready to implement in order. Slice 01
+  code is **not yet implemented** (no PRs merged).

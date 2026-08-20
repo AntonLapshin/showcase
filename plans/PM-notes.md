@@ -73,3 +73,56 @@ live in `src/core`.
 - Slice 01 not implemented (awaits team).
 - No GitHub Pages demo deployed yet (awaits `main` push + workflow run).
 - npm publishing intentionally deferred to the human.
+
+---
+
+## Cycle 2026-08-20 (run pm-20260820-181242-251ee072) — re-dispatch
+
+### This dispatch
+
+Dispatched `pm` again with reason "no ready work; 3 open issue(s) remain
+unplanned". Re-verified the live GitHub state (scan 22:12, not the stale
+pre-issue scan from 21:18):
+
+- **3 open issues** (#1 core engine, #2 thin UI, #3 demo/packaging prep) — all
+  filed in the prior planning cycle, all referencing `plans/slice-01.md`.
+- **0 open PRs, 0 merged PRs** — no one has picked the issues up yet, so there
+  is no in-flight implementation work.
+- **CI**: latest `CI` run for `13924d0` completed **success** (lint,
+  test:coverage @ 100% core, build).
+- Codebase still at scaffold: `src/core` holds only `projectInfo.ts`; `App.tsx`
+  still mounts the `DemoPanel` placeholder (Slice 01 unimplemented).
+- **Pages deploy still failing** — repo is private and Pages not enabled
+  (human-blocked, see above).
+
+### Decision (no plan revision needed)
+
+> Dispatch reason outcome: **SLICE 01 is the ground truth** — the three open
+> issues ARE the plan; nothing new to author. The "no ready work" signal means
+> the dev persona has not started, not that the plan is missing.
+
+**Plan of record stays `plans/slice-01.md`**, mapped 1:1 to open issues #1–#3.
+The issues are implementation-ready and correctly batched (meets
+`maxBatchIssues: 3`). No changes to scope, ordering, or DoD.
+
+### Ready-to-pick-up (for the dev persona, batch order)
+
+1. Issue **#1** — core showcase engine (`src/core`): registry, selection,
+   expand/collapse, URL (de)serialize. Pure TS, 100% coverage (gate already in
+   `vite.config.ts`).
+2. Issue **#2** — thin showcase UI + `useShowcase` view model + `window.history`
+   URL sync + 2–3 sample showcase files. Depends on #1's core API.
+3. Issue **#3** — demo root swap (drop `DemoPanel`), README usage + "add a
+   showcase" + live-demo link, and `package.json` library-entry prep (no
+   publish). Depends on #2.
+
+Sequential order matters (#1 → #2 → #3) because each later issue builds on the
+previous layer; the developer should still branch per issue and merge
+incrementally so each merged PR keeps CI green.
+
+### Not done this cycle
+
+- Slice 01 still not implemented (issues open, no PRs) — **this is the only
+  blocker to scope done** for Slice 01.
+- GitHub Pages demo still human-blocked (private repo / Pages disabled).
+- npm publishing still deferred to the human.

@@ -19,7 +19,8 @@ in place and `npm install && npm test && npm run build` pass. The next slice
 
 ## Next slice — Slice 01 (see `plans/slice-01.md`)
 
-> Implementation-ready. Latest PM notes: `plans/PM-notes.md`.
+> Implementation-ready. Issues **#1–#3** are open and batched (max 3); pick up
+> in order #1 → #2 → #3. Latest PM notes: `plans/PM-notes.md`.
 
 Extract a lightweight, Storybook-like component gallery from
 `ws/natalies-corner/web/src/showcase` into this standalone package:
