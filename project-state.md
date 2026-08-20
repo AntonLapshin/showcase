@@ -19,7 +19,9 @@ in place and `npm install && npm test && npm run build` pass. The next slice
 
 ## Next slice — Slice 01 (see `plans/slice-01.md`)
 
-> Implementation-ready. Issues **#1–#3** are open and batched (max 3); pick up
+> Implementation-ready. Issues **#1–#3** are open, batched (max 3), labeled
+> `pi:ready` (with `size`, `type:feature`, `milestone:m1`, and `pi:issue-id`
+> markers M1-T1/T2/T3 for idempotency), and ready for the Engineer to pick up
 > in order #1 → #2 → #3. Latest PM notes: `plans/PM-notes.md`.
 
 Extract a lightweight, Storybook-like component gallery from
