@@ -15,6 +15,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Badge) to plain CSS, remove `tailwindcss`/`autoprefixer`/`postcss`
   devDependencies, `tailwind.config.ts`, and update README.
 
+### Gallery UI to plain CSS (#10)
+
+- Rewrote the `Showcase` gallery (`src/ui/components/Showcase.tsx`) to use plain,
+  scoped class names instead of Tailwind utility classes (`className` strings
+  are now Tailwind-free).
+- Added a self-contained plain-CSS stylesheet `src/styles/showcase.css` that
+  styles the full 4-cell gallery (header / breadcrumbs / sidebar nav / canvas,
+  the 2x2 cell grid, expand/collapse affordances, and active-variant highlight)
+  with no `@tailwind` directives, so the gallery renders without a Tailwind
+  build step.
+- `Showcase` remains a thin, dumb view; `src/core` is untouched. Existing
+  class-agnostic component tests in `tests/ui/showcase.test.tsx` still pass
+  unchanged, and `dist/style.css` (via `npm run build:lib`) now emits the plain
+  gallery styles.
+
 ### Added
 
 - Initial React + Tailwind + TypeScript scaffold (Vite).
