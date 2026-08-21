@@ -15,6 +15,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Badge) to plain CSS, remove `tailwindcss`/`autoprefixer`/`postcss`
   devDependencies, `tailwind.config.ts`, and update README.
 
+### Sample showcases to plain CSS (#11)
+
+- Rewrote the three sample showcase files (`src/ui/showcases/Button.tsx`,
+  `Spinner.tsx`, and `Badge.tsx`) to use plain, scoped class names instead of
+  Tailwind utility classes — the `className` strings are now Tailwind-free and
+  render without a Tailwind build step.
+- Added a self-contained plain-CSS stylesheet `src/styles/showcases.css` that
+  preserves the visual look of the samples: Primary/Secondary/Disabled button,
+  Spinner sizes/colors (default indigo, emerald), and the Badge tones
+  (slate/emerald/amber/indigo), with a `sample-` prefix and no `@tailwind`
+  directives.
+- The showcase files stay pure presentational components (no business logic);
+  `src/core` is untouched and `src/ui/showcases/index.ts` still assembles the
+  same showcase files. Existing class-agnostic component tests in
+  `tests/ui/showcase.test.tsx` still pass unchanged, and `dist/style.css` (via
+  `npm run build:lib`) now emits the sample styles alongside the gallery
+  styles.
+
 ### Gallery UI to plain CSS (#10)
 
 - Rewrote the `Showcase` gallery (`src/ui/components/Showcase.tsx`) to use plain,
