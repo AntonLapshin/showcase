@@ -13,10 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   centered `<img>` block at the top of `README.md` (below the `# showcase`
   title) so the project is visibly branded on the GitHub repo page and npm.
 
-### Planned (Slice 03 / m3 — README polish)
+### Change url to "auto-pi" repo (#17)
 
-- Fix the auto-pi repo URL in the README (#17): point the maintainer link at
-  `https://github.com/AntonLapshin/auto-pi` instead of `https://github.com/auto-pi/auto-pi`.
+- Fixed the maintainer URL in `README.md` from `https://github.com/auto-pi/auto-pi`
+  to `https://github.com/AntonLapshin/auto-pi` so the auto-pi link points at the
+  correct repository.
+
 
 
 ### Remove Tailwind build config, dependency, and README mentions (#12)
