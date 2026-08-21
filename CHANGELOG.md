@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned (Slice 03 / m3 — README polish)
+
+- Fix the auto-pi repo URL in the README (#17): point the maintainer link at
+  `https://github.com/AntonLapshin/auto-pi` instead of `https://github.com/auto-pi/auto-pi`.
+- Add a logo image to the README (#16).
+
+
 ### Remove Tailwind build config, dependency, and README mentions (#12)
 
 - Removed the `@tailwind` directives from `src/styles/index.css` — it's now a

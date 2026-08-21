@@ -4,10 +4,12 @@
 
 ## Status
 
-**DONE** — All milestones complete and merged. Slice 01 (m1) and Slice 02 (m2)
-finished. m2 made the library **style-framework agnostic** by fully removing the
-TailwindCSS dependency (PRs #13, #14, #15). CI green, 100% core coverage, build
-passes, Pages demo live, README demo URL present.
+**IN-PROGRESS (slice 03 / m3)** — Slice 01 (m1) and Slice 02 (m2) are complete
+and merged. m2 made the library **style-framework agnostic** by fully removing
+the TailwindCSS dependency (PRs #13, #14, #15). New README-polish issues #16
+(add logo) and #17 (fix auto-pi repo URL) were planned as slice 03 (m3) and are
+ready for the Engineer. CI green, 100% core coverage, build passes, Pages demo
+live, README demo URL present.
 
 ## What's here
 
@@ -49,6 +51,17 @@ style-framework agnostic. All three sub-issues merged:
 **m2 success criteria met**: no Tailwind dependency at build or runtime; `npm
 ci`, `npm run lint`, `npm run test:coverage` (100% core), `npm run build`, and
 `npm run build:lib` all green; the Pages demo still renders (HTTP 200).
+
+## Slice 03 (m3) — PLANNED (README polish)
+
+Two new open, unplanned issues were planned as slice 03 and labeled ready:
+
+- **#17** — fix the auto-pi repo URL in the README (`https://github.com/auto-pi/auto-pi`
+  → `https://github.com/AntonLapshin/auto-pi`). size:xs, type:feature.
+- **#16** — add a logo image to the README. size:xs, type:feature.
+
+Both are labeled `pi:ready` / `size:xs` / `type:feature` / `milestone:m3` and
+are ready for the Engineer.
 
 ## CI / Pages status
 

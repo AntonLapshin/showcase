@@ -5,10 +5,12 @@
 
 ## Status
 
-**done** — All milestones complete. Slice 01 (m1) and Slice 02 (m2) are both
-implemented and merged. m2 made the showcase library **style-framework agnostic**
-by fully removing the TailwindCSS dependency (PRs #13, #14, #15). CI green, 100%
-core coverage, build passes, Pages demo live, README demo link present. npm
+**in-progress (slice 03 / m3)** — Slice 01 (m1) and Slice 02 (m2) are complete
+and merged, and the core product is live. m2 made the showcase library
+**style-framework agnostic** by fully removing the TailwindCSS dependency (PRs
+#13, #14, #15). A small new README-polish slice (m3) was planned from new open
+issues #16/#17: fix the auto-pi repo URL in the README and add a logo to the
+README. CI green, 100% core coverage, build passes, Pages demo live. npm
 publishing remains a manual follow-up by the owner.
 
 ## Purpose
@@ -40,12 +42,17 @@ the UI is a thin view. Reference/most-recent implementation:
   agnostic** by removing the TailwindCSS dependency and using plain CSS. Triggered
   by issue #9, split into M2-T1..M2-T3 (#10/#11/#12). All merged via PRs #13, #14,
   #15. CI green, 100% core coverage, build passes, Pages demo still live.
+- **m3 — Slice 03 (PLANNED)**: README polish / documentation follow-ups.
+  - **#17** fix the auto-pi repo URL in the README (line: `https://github.com/auto-pi/auto-pi`
+    → `https://github.com/AntonLapshin/auto-pi`).
+  - **#16** add a logo image to the README.
 
 ## Active plan
 
 - Slice 01: see [`plans/slice-01.md`](plans/slice-01.md) — complete.
-- Slice 02 (m2): style-framework-agnostic refactor — remove Tailwind, use plain
-  CSS in the gallery UI, sample showcases, and build config; update README.
+- Slice 02 (m2): style-framework-agnostic refactor — complete.
+- Slice 03 (m3): README polish — fix auto-pi repo URL (#17) and add a logo to
+  the README (#16). Both are size:xs and ready for the Engineer.
 
 ## Non-goals (initial slice)
 
@@ -67,6 +74,12 @@ the UI is a thin view. Reference/most-recent implementation:
   packaging prep all implemented and merged (PRs #4, #5, #7). CI green, 100%
   core coverage, build passes, Pages demo live, README demo link present.
   npm publishing remains a manual follow-up by the owner.
+
+## Progress check (Slice 03 / m3) — PLANNED
+
+- Issues **#17** (fix auto-pi repo URL in README) and **#16** (add logo to
+  README) were new open, unplanned issues. Both were planned: labeled
+  `pi:ready`, `size:xs`, `type:feature`, `milestone:m3`. Ready for the Engineer.
 
 ## Progress check (Slice 02 / m2) — COMPLETE
 
