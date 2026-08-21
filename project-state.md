@@ -4,11 +4,10 @@
 
 ## Status
 
-**IN-PROGRESS — Slice 02 (m2)** — Slice 01 remains complete, but a new open
-issue (#9) requested making the showcase library **style-framework agnostic**
-(remove the TailwindCSS dependency, use plain CSS). That work is now planned as
-**Slice 02 / milestone m2** and split into a small batch of 3 issues. The project
-is back **in-progress** until m2 is merged and verified.
+**DONE** — All milestones complete and merged. Slice 01 (m1) and Slice 02 (m2)
+finished. m2 made the library **style-framework agnostic** by fully removing the
+TailwindCSS dependency (PRs #13, #14, #15). CI green, 100% core coverage, build
+passes, Pages demo live, README demo URL present.
 
 ## What's here
 
@@ -35,23 +34,21 @@ All three Slice 01 issues merged:
   via PR #5.
 - **#3** demo polish + README + library-entry prep — merged via PR #7.
 
-## Slice 02 (m2) — PLANNED (style-framework agnostic)
+## Slice 02 (m2) — COMPLETE (style-framework agnostic)
 
 Triggered by issue **#9**: remove TailwindCSS, use plain CSS so the library is
-style-framework agnostic. The core (`src/core`) is already pure TS and
-Tailwind-free; Tailwind is confined to the UI layer, `src/styles/index.css`, the
-build config, and README. Closed #9 as it was split into a small batch:
+style-framework agnostic. All three sub-issues merged:
 
-- **#10 (M2-T1)** — rewrite `Showcase.tsx` gallery UI to plain CSS
-  (`size:s, type:refactor`).
-- **#11 (M2-T2)** — rewrite sample showcases (Button/Spinner/Badge) to plain CSS
-  (`size:xs, type:refactor`).
-- **#12 (M2-T3)** — remove Tailwind build config, dependency, and README mentions
-  (`size:xs, type:refactor`).
+- **#10 (M2-T1)** — rewrite `Showcase.tsx` gallery UI to plain CSS — merged via
+  PR #13.
+- **#11 (M2-T2)** — rewrite sample showcases (Button/Spinner/Badge) to plain
+  CSS — merged via PR #14.
+- **#12 (M2-T3)** — remove Tailwind build config, dependency, and README
+  mentions — merged via PR #15.
 
-**m2 success criteria**: no Tailwind dependency at build or runtime; `npm ci`,
-`npm run lint`, `npm run test:coverage` (100% core), `npm run build`, and
-`npm run build:lib` all green; the Pages demo still renders identically.
+**m2 success criteria met**: no Tailwind dependency at build or runtime; `npm
+ci`, `npm run lint`, `npm run test:coverage` (100% core), `npm run build`, and
+`npm run build:lib` all green; the Pages demo still renders (HTTP 200).
 
 ## CI / Pages status
 
@@ -59,12 +56,12 @@ build config, and README. Closed #9 as it was split into a small batch:
 - ✅ GitHub Pages demo **live** at https://AntonLapshin.github.io/showcase/
   (HTTP 200; Pages enabled, `build_type: workflow`, deploy workflow green).
 
-## Done (Slice 01 verified 2026-08-21)
+## Done (all milestones — verified 2026-08-21)
 
-- [x] All Slice 01 milestones complete (PRs #4, #5, #7).
-- [ ] **Not done** — a new open issue (#9 → m2 batch #10/#11/#12) means there is
-      unplanned remaining work, so the project is no longer done.
-- [x] CI passes — latest CI run on `main` is success.
+- [x] All milestones complete — m1 (PRs #4, #5, #7) and m2 (PRs #13, #14, #15)
+      implemented and merged.
+- [x] No open issues and no open PRs — nothing in flight.
+- [x] CI passes — latest CI runs on `main` are success.
 - [x] Tests pass — `npm test`: 36 tests green.
 - [x] Core coverage 100% — `npm run test:coverage`: 100% on `src/core/**`.
 - [x] Build succeeds — `npm run build` produces a working bundle.
