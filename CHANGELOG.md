@@ -37,11 +37,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Pages demo shows real gallery content.
 - Component interaction tests (`tests/ui/showcase.test.tsx`) covering render,
   expand/collapse, selection → canvas + URL, deep-link restore, and popstate.
+- Dropped the scaffold `DemoPanel` / `useProjectInfo` / `projectInfo` placeholder
+  (the demo root now mounts the showcase gallery directly).
 
-### Planned (Slice 01 — see `plans/slice-01.md`)
+### Demo polish + library-entry prep (#3)
 
-- Core showcase engine in `src/core` (registry, selection, expand/collapse, URL
-  encode/decode) with 100% coverage.
-- Thin showcase UI + view model + window-history URL sync + sample demo
-  showcases.
-- Demo polish + README usage + library-entry prep in `package.json`.
+- Demo root now renders the `Showcase` gallery (placeholder `DemoPanel` removed).
+- README rewritten: live-demo link, quick usage, how to run/build/library
+  usage, and a "how to add a showcase file" guide.
+- `package.json` library-entry prep for a future `npm publish` (manual):
+  `peerDependencies` (`react` / `react-dom`), `files`, `exports`, and
+  `main`/`module`/`types` pointing at the built `dist/` bundle.
+- Public library entry `src/index.ts` re-exporting the pure core engine, the
+  `Showcase` component, `useShowcase`, and the sample docs.
+- Library build (`vite.lib.config.ts` + `tsconfig.lib.json` + `npm run build:lib`)
+  emitting a reusable ESM bundle and TypeScript declarations.
+- Verified `npm pack --dry-run` contains the expected artifacts (bundle, types,
+  README, CHANGELOG).

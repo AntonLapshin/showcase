@@ -1,20 +1,37 @@
 {
   "name": "showcase",
   "version": "0.1.0",
-  "private": true,
+  "description": "A lightweight, Storybook-like component gallery: a registry of showcase files and variant components with URL deep-linking.",
   "type": "module",
-  "description": "Implement a new project called Showcase, it's a lightweight alternative to Storybook. It's already implemented in ws/natalies-corner/web project. Your goal is to extract it into a standalone git repository, polish it, create a demo (github page), README and prepare a package for npm publishing (I'll publish it manually).",
+  "main": "./dist/showcase.js",
+  "module": "./dist/showcase.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/showcase.js",
+      "default": "./dist/showcase.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:lib": "vite build --config vite.lib.config.ts && tsc -p tsconfig.lib.json",
     "preview": "vite preview",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run build:lib"
   },
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.8.0",
@@ -32,6 +49,8 @@
     "globals": "^15.9.0",
     "jsdom": "^24.1.0",
     "postcss": "^8.4.40",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.0",

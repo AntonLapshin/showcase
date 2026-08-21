@@ -1,13 +1,18 @@
 # showcase
 
-Implement a new project called Showcase, it's a lightweight alternative to Storybook. It's already implemented in ws/natalies-corner/web project. Your goal is to extract it into a standalone git repository, polish it, create a demo (github page), README and prepare a package for npm publishing (I'll publish it manually).
+A lightweight, Storybook-like component gallery. Register a set of showcase
+"files" — each with a `name` and several named variant components — and get a
+sidebar + canvas UI with URL deep-linking (`?file=..&showcase=..`).
 
-> Generated and maintained by [auto-pi](https://github.com/auto-pi/auto-pi) — an
+> Built and maintained by [auto-pi](https://github.com/auto-pi/auto-pi) — an
 > autonomous engineering team harness for Pi.
 
-## Demo
+## Live demo
 
-Live demo: **[https://AntonLapshin.github.io/showcase/](https://AntonLapshin.github.io/showcase/)**
+Live GitHub Pages demo: **[https://AntonLapshin.github.io/showcase/](https://AntonLapshin.github.io/showcase/)**
+
+Open any showcase, and its selection is reflected in the URL — you can share a
+deep link, refresh, and use back/forward to navigate selections.
 
 ## Stack
 
@@ -18,32 +23,114 @@ Live demo: **[https://AntonLapshin.github.io/showcase/](https://AntonLapshin.git
 ## Getting started
 
 ```bash
-npm install     # install dependencies
-npm run dev     # start the dev server
+npm install          # install dependencies
+npm run dev          # start the dev server (localhost:5173)
+npm run build        # type-check (`tsc`) then build the demo for production
+npm run preview      # preview the production build locally
 ```
 
 ## Scripts
 
-| Script              | Purpose                                    |
-|---------------------|--------------------------------------------|
-| `npm run dev`       | Start the Vite dev server                  |
-| `npm run build`     | Type-check (`tsc`) then build for production |
-| `npm run preview`   | Preview the production build locally       |
-| `npm run lint`      | Run ESLint                                 |
-| `npm test`          | Run unit tests (Vitest)                    |
-| `npm run test:coverage` | Run tests and enforce 100% core coverage |
+| Script                  | Purpose                                          |
+|-------------------------|--------------------------------------------------|
+| `npm run dev`           | Start the Vite dev server                        |
+| `npm run build`         | Type-check then build the demo for production    |
+| `npm run build:lib`     | Build the reusable library bundle + types (`dist/`) |
+| `npm run preview`       | Preview the production build locally             |
+| `npm run lint`          | Run ESLint (max-warnings 0)                      |
+| `npm test`              | Run unit tests (Vitest)                          |
+| `npm run test:coverage` | Run tests and enforce 100% core coverage         |
+
+## Using it as a library
+
+The package builds a reusable ESM bundle (`dist/showcase.js`) plus TypeScript
+declarations via `npm run build:lib` (or automatically on `npm pack` /
+`prepublishOnly`). `react` and `react-dom` are **peer** dependencies — the
+consumer provides its own React.
+
+```tsx
+import { Showcase } from "showcase";
+
+function App() {
+  return <Showcase />;
+}
+```
+
+Or use just the pure core engine (no React runtime) to drive your own UI:
+
+```ts
+import {
+  createShowcaseRegistry,
+  createShowcaseState,
+  select,
+  encodeUrlPath,
+  decodeUrlPath,
+} from "showcase";
+
+const registry = createShowcaseRegistry(myFiles);
+const state = select(createShowcaseState(), registry, "Button", "Primary");
+console.log(encodeUrlPath(state.selection)); // ?file=Button&showcase=Primary
+```
+
+## How to add a showcase file
+
+1. Create a file under `src/ui/showcases/` (e.g. `src/ui/showcases/Chip.tsx`),
+   exporting a `name` constant and one component per variant:
+
+   ```tsx
+   export const name = "Chip";
+
+   export const Primary = () => (
+     <span className="rounded-full bg-indigo-600 px-3 py-1 text-sm text-white">
+       Primary
+     </span>
+   );
+
+   export const Outline = () => (
+     <span className="rounded-full border border-slate-300 px-3 py-1 text-sm">
+       Outline
+     </span>
+   );
+   ```
+
+2. Register it in `src/ui/showcases/index.ts` by importing the module and adding
+   a `ShowcaseFile` entry whose `name` matches the exported `name` constant:
+
+   ```tsx
+   import * as Chip from "./Chip";
+
+   export const demoShowcaseFiles: readonly ShowcaseFile[] = [
+     // ...existing files...
+     {
+       name: Chip.name,
+       showcases: {
+         Primary: Chip.Primary,
+         Outline: Chip.Outline,
+       },
+     },
+   ];
+   ```
+
+3. That's it — the sidebar, canvas, and URL deep-linking pick it up
+   automatically. Variants are pure presentational components: keep business
+   logic in `src/core`.
 
 ## Architecture
 
 The project enforces a strict **core / UI split** (plan.md §19.1):
 
 - `src/core/**` — pure business logic, no React, no DOM. **100% test coverage is
-  required here.**
-- `src/ui/**` — thin, dumb view layer (components + view models). Contains no
-  business logic; it only renders what `src/core` provides.
+  required here.** The showcase engine (`src/core/showcase.ts`) owns the data
+  model, registry validation, and selection / expand-collapse / URL
+  (de)serialization state transitions.
+- `src/ui/**` — thin, dumb view layer. `Showcase.tsx` is a presentational
+  component; `useShowcase.ts` is a thin view model that binds core functions to
+  component state and syncs the URL via `window.history` / `popstate`
+  (router-agnostic — no react-router dependency).
 
 ## Project documents
 
 - [`manifest.md`](manifest.md) — project charter / intent
 - [`project-state.md`](project-state.md) — current state and progress
 - [`CHANGELOG.md`](CHANGELOG.md) — versioned change log
+- [`plans/slice-01.md`](plans/slice-01.md) — the current implementation slice
