@@ -17,8 +17,11 @@ deep link, refresh, and use back/forward to navigate selections.
 ## Stack
 
 - [Vite](https://vitejs.dev/) + [React](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/) for styling
 - [Vitest](https://vitest.dev/) for unit tests, with 100% coverage enforced on `src/core/**/*.ts`
+
+> **Style-framework agnostic.** The library ships with plain CSS only (no
+> Tailwind or other framework dependency at build time or runtime) — you can
+> drop it into any existing project and style it however you like.
 
 ## Getting started
 
@@ -81,17 +84,20 @@ console.log(encodeUrlPath(state.selection)); // ?file=Button&showcase=Primary
    export const name = "Chip";
 
    export const Primary = () => (
-     <span className="rounded-full bg-indigo-600 px-3 py-1 text-sm text-white">
+     <span className="sample-chip sample-chip--primary">
        Primary
      </span>
    );
 
    export const Outline = () => (
-     <span className="rounded-full border border-slate-300 px-3 py-1 text-sm">
+     <span className="sample-chip sample-chip--outline">
        Outline
      </span>
    );
    ```
+
+   Plain-CSS styling lives in scoped stylesheets under `src/styles/` (see the
+   sample styles in `src/styles/showcases.css`).
 
 2. Register it in `src/ui/showcases/index.ts` by importing the module and adding
    a `ShowcaseFile` entry whose `name` matches the exported `name` constant:

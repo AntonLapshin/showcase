@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Remove Tailwind build config, dependency, and README mentions (#12)
+
+- Removed the `@tailwind` directives from `src/styles/index.css` — it's now a
+  minimal plain-CSS entry (all real styling lives in the component-scoped
+  `src/styles/showcase.css` and `src/styles/showcases.css`).
+- Deleted `tailwind.config.ts` and `postcss.config.js` (including the
+  `tailwindcss` / `autoprefixer` postcss plugins).
+- Removed the `tailwindcss`, `autoprefixer`, and `postcss` devDependencies from
+  `package.json` (`npm install` pruned them from `package-lock.json`).
+- Updated `README.md`: removed Tailwind from the Stack list, noted the library
+  is style-framework agnostic (plain CSS only), and updated the "how to add a
+  showcase file" example to use plain `sample-*` classes instead of Tailwind
+  utilities.
+- Verified `npm ci`, `npm run lint`, `npm test`, `npm run test:coverage` (100%
+  core), `npm run build`, and `npm run build:lib` all pass with Tailwind fully
+  removed — the package now has zero Tailwind dependency at build or runtime
+  (the `postcss` entry remaining in the lockfile is a transitive dep of Vite,
+  not a direct project dependency).
+
 ### Planned (Slice 02 / m2 — style-framework agnostic)
 
 - Remove the TailwindCSS dependency and use plain CSS so the showcase library
