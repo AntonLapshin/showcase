@@ -7,10 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Change url to "auto-pi" repo (#17)
+
+- Fixed the maintainer URL in `README.md` from `https://github.com/auto-pi/auto-pi`
+  to `https://github.com/AntonLapshin/auto-pi` so the auto-pi link points at the
+  correct repository.
+
 ### Planned (Slice 03 / m3 — README polish)
 
-- Fix the auto-pi repo URL in the README (#17): point the maintainer link at
-  `https://github.com/AntonLapshin/auto-pi` instead of `https://github.com/auto-pi/auto-pi`.
 - Add a logo image to the README (#16).
 
 

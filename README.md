@@ -4,7 +4,7 @@ A lightweight, Storybook-like component gallery. Register a set of showcase
 "files" — each with a `name` and several named variant components — and get a
 sidebar + canvas UI with URL deep-linking (`?file=..&showcase=..`).
 
-> Built and maintained by [auto-pi](https://github.com/auto-pi/auto-pi) — an
+> Built and maintained by [auto-pi](https://github.com/AntonLapshin/auto-pi) — an
 > autonomous engineering team harness for Pi.
 
 ## Live demo
