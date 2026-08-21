@@ -14,6 +14,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Vitest setup enforcing 100% coverage on `src/core/**/*.ts`.
 - Initial demo panel rendering project name / status / demo info.
 
+### Showcase engine core (#1)
+
+- Pure, router-agnostic showcase engine in `src/core/showcase.ts`: `ShowcaseFile`
+  / variant data model (opaque components, no React runtime), validated
+  `createShowcaseRegistry`, and state transitions `select`, `toggleExpand`,
+  `applyUrlPath`.
+- URL encode/decode helpers (`encodeUrlPath` / `decodeUrlPath`) that are
+  round-trip safe and handle missing/unknown values.
+- 100% line/branch/function/statement coverage on `src/core`.
+
 ### Planned (Slice 01 — see `plans/slice-01.md`)
 
 - Core showcase engine in `src/core` (registry, selection, expand/collapse, URL
