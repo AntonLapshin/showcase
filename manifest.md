@@ -5,7 +5,10 @@
 
 ## Status
 
-**done** — completed at 2026-08-21T15:33:00Z
+**in-progress** — Slice 01 done; new unplanned work (issue #9: make the library
+style-framework agnostic) is being planned as **Slice 02 / milestone m2**.
+(Slice 01 was previously marked done; a new open issue means there is remaining
+work, so the project is back in progress.)
 
 ## Purpose
 
@@ -27,11 +30,20 @@ shareable and navigable. The engine lives in `src/core` (pure, router-agnostic);
 the UI is a thin view. Reference/most-recent implementation:
 `ws/natalies-corner/web/src/showcase/`.
 
+## Milestones
+
+- **m1 — Slice 01 (COMPLETE)**: core showcase engine, thin UI + view model,
+  demo polish + README + packaging prep. Merged via PRs #4, #5, #7. CI green,
+  100% core coverage, Pages demo live.
+- **m2 — Slice 02 (PLANNED)**: make the showcase library **style-framework
+  agnostic** by removing the TailwindCSS dependency and using plain CSS. Triggered
+  by issue #9. Split into issues M2-T1..M2-T3 below.
+
 ## Active plan
 
-See [`plans/slice-01.md`](plans/slice-01.md) — the current slice implementing the
-showcase engine core, a thin demo UI with sample showcases, and demo/packaging
-prep.
+- Slice 01: see [`plans/slice-01.md`](plans/slice-01.md) — complete.
+- Slice 02 (m2): style-framework-agnostic refactor — remove Tailwind, use plain
+  CSS in the gallery UI, sample showcases, and build config; update README.
 
 ## Non-goals (initial slice)
 
@@ -53,3 +65,17 @@ prep.
   packaging prep all implemented and merged (PRs #4, #5, #7). CI green, 100%
   core coverage, build passes, Pages demo live, README demo link present.
   npm publishing remains a manual follow-up by the owner.
+
+## Progress check (Slice 02 / m2) — PLANNED
+
+- Open issue **#9**: "Get rid of TailwindCSS dependency in the core and only use
+  plain css so the library becomes style-framework agnostic."
+- The core (`src/core`) is already pure TS and Tailwind-free; the Tailwind usage
+  is confined to the **UI layer** (`src/ui`), `src/styles/index.css`, the build
+  config (`tailwind.config.ts`, `postcss.config.js`, `package.json` devDeps) and
+  `README.md`.
+- **Split into 3 small sub-issues (M2-T1..M2-T3)** — gallery UI, sample
+  showcases, and build-config/README cleanup.
+- Success criteria: no `tailwind` dependency at runtime or build; `npm ci`,
+  `npm test`, `npm run test:coverage` (100% core), and `npm run build` all green;
+  Pages demo still renders identically.

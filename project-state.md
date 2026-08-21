@@ -4,10 +4,11 @@
 
 ## Status
 
-**COMPLETE** — Slice 01 is fully implemented, merged, and verified. The
-lightweight Storybook-like showcase gallery is implemented, the GitHub Pages
-demo is live, and all done-definition criteria are met. The only remaining
-follow-up is manual npm publishing by the owner.
+**IN-PROGRESS — Slice 02 (m2)** — Slice 01 remains complete, but a new open
+issue (#9) requested making the showcase library **style-framework agnostic**
+(remove the TailwindCSS dependency, use plain CSS). That work is now planned as
+**Slice 02 / milestone m2** and split into a small batch of 3 issues. The project
+is back **in-progress** until m2 is merged and verified.
 
 ## What's here
 
@@ -34,16 +35,35 @@ All three Slice 01 issues merged:
   via PR #5.
 - **#3** demo polish + README + library-entry prep — merged via PR #7.
 
+## Slice 02 (m2) — PLANNED (style-framework agnostic)
+
+Triggered by issue **#9**: remove TailwindCSS, use plain CSS so the library is
+style-framework agnostic. The core (`src/core`) is already pure TS and
+Tailwind-free; Tailwind is confined to the UI layer, `src/styles/index.css`, the
+build config, and README. Closed #9 as it was split into a small batch:
+
+- **#10 (M2-T1)** — rewrite `Showcase.tsx` gallery UI to plain CSS
+  (`size:s, type:refactor`).
+- **#11 (M2-T2)** — rewrite sample showcases (Button/Spinner/Badge) to plain CSS
+  (`size:xs, type:refactor`).
+- **#12 (M2-T3)** — remove Tailwind build config, dependency, and README mentions
+  (`size:xs, type:refactor`).
+
+**m2 success criteria**: no Tailwind dependency at build or runtime; `npm ci`,
+`npm run lint`, `npm run test:coverage` (100% core), `npm run build`, and
+`npm run build:lib` all green; the Pages demo still renders identically.
+
 ## CI / Pages status
 
 - ✅ CI green on `main`: lint, test:coverage (100% core), and build all pass.
 - ✅ GitHub Pages demo **live** at https://AntonLapshin.github.io/showcase/
   (HTTP 200; Pages enabled, `build_type: workflow`, deploy workflow green).
 
-## Done (done-definition verified 2026-08-21)
+## Done (Slice 01 verified 2026-08-21)
 
-- [x] All milestones complete (Slice 01 merged via PRs #4, #5, #7).
-- [x] No open issues (0) and no open PRs (0).
+- [x] All Slice 01 milestones complete (PRs #4, #5, #7).
+- [ ] **Not done** — a new open issue (#9 → m2 batch #10/#11/#12) means there is
+      unplanned remaining work, so the project is no longer done.
 - [x] CI passes — latest CI run on `main` is success.
 - [x] Tests pass — `npm test`: 36 tests green.
 - [x] Core coverage 100% — `npm run test:coverage`: 100% on `src/core/**`.

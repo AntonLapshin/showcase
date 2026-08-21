@@ -175,3 +175,55 @@ incrementally so each merged PR keeps CI green.
 - Slice 01 still not implemented (issues open, no PRs) — awaiting Engineer.
 - GitHub Pages demo still human-blocked (private repo / Pages not enabled).
 - npm publishing still deferred to the human.
+
+---
+
+## Cycle 2026-08-21 (run pm-20260821-141434-d5d17e87)
+
+### Dispatch
+
+`pm` with reason "1 open issue(s) remain unplanned". Issue **#9** (make the
+library style-framework agnostic — remove TailwindCSS, use plain CSS) was open
+with an empty body and **no labels** (not `pi:ready`, no size/type/milestone),
+so it was not dispatchable and represented genuinely new unplanned work.
+
+### Decision: back to in-progress, plan Slice 02 / m2
+
+Slice 01 was done and the project was marked `done` (completed.json present),
+but a new open issue means there is unplanned remaining work — violating the
+done-definition ("no open issues"). So the project is **back in-progress** and a
+new slice is planned.
+
+**Scope analysis:** `src/core` is already pure TS and Tailwind-free (100%
+covered). Tailwind usage lives entirely in the UI layer: `Showcase.tsx` gallery
+utilities, the three sample showcases, `src/styles/index.css` (`@tailwind`
+directives), `tailwind.config.ts`, `postcss.config.js`, the `tailwindcss`/
+`autoprefixer`/`postcss` devDeps, and README. This is a refactor, not new
+business logic, so it splits cleanly into a small UI/build/README batch.
+
+### Milestone m2 (Slice 02) — created and batched (≤ 3)
+
+- **#10 (M2-T1)** `size:s,type:refactor` — rewrite `Showcase.tsx` gallery UI to
+  plain CSS (dedicated stylesheet, plain class names; keep `tests/ui/*` green).
+- **#11 (M2-T2)** `size:xs,type:refactor` — rewrite sample showcases
+  (Button/Spinner/Badge) to plain CSS / inline styles.
+- **#12 (M2-T3)** `size:xs,type:refactor` — remove Tailwind build config
+  (`tailwind.config.ts`, postcss plugin, `@tailwind` directives), prune
+  devDeps, update README to say "style-framework agnostic".
+
+Closed **#9** as the umbrella issue, referencing the split (#10/#11/#12).
+Updated `manifest.md` (added Milestones + m2 progress check, status
+`in-progress`), `project-state.md`, and `CHANGELOG.md`. Removed
+`.pi/state/completed.json` (project no longer done).
+
+### Ready-to-pick-up (order)
+
+1. **#10** M2-T1 gallery UI plain CSS (depends on nothing; do first).
+2. **#11** M2-T2 sample showcases plain CSS.
+3. **#12** M2-T3 Tailwind config/dep/README removal (depends on #10/#11 so the
+   demo renders without Tailwind before the build step is stripped).
+
+### Not done this cycle
+
+- m2 not implemented (issues open, await Engineer).
+- npm publishing still deferred to the human (manual).

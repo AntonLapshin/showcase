@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Planned (Slice 02 / m2 — style-framework agnostic)
+
+- Remove the TailwindCSS dependency and use plain CSS so the showcase library
+  becomes style-framework agnostic (issue #9, split into #10/#11/#12):
+  rewrite the `Showcase` gallery UI and the sample showcases (Button, Spinner,
+  Badge) to plain CSS, remove `tailwindcss`/`autoprefixer`/`postcss`
+  devDependencies, `tailwind.config.ts`, and update README.
+
 ### Added
 
 - Initial React + Tailwind + TypeScript scaffold (Vite).
