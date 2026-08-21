@@ -1,5 +1,9 @@
 # showcase
 
+<p align="center">
+  <img src="docs/logo.png" alt="showcase logo" width="512" />
+</p>
+
 A lightweight, Storybook-like component gallery. Register a set of showcase
 "files" — each with a `name` and several named variant components — and get a
 sidebar + canvas UI with URL deep-linking (`?file=..&showcase=..`).
