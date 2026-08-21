@@ -3,6 +3,10 @@
 > Project charter / intent. This file is a living document maintained by the
 > auto-pi PM persona as the project evolves.
 
+## Status
+
+**done** — completed at 2026-08-21T15:33:00Z
+
 ## Purpose
 
 Implement a new project called Showcase, it's a lightweight alternative to Storybook. It's already implemented in ws/natalies-corner/web project. Your goal is to extract it into a standalone git repository, polish it, create a demo (github page), README and prepare a package for npm publishing (I'll publish it manually).
@@ -36,16 +40,16 @@ prep.
 ## Success criteria
 
 - [x] `npm install && npm test && npm run build` pass in CI (verified green on
-      `main`, e.g. `13924d0`).
-- [ ] A live demo is deployed to GitHub Pages — **blocked on human action**:
-      repo is private and Pages not enabled; the owner must enable Pages (or
-      make the repo public) before `deploy-pages.yml` can succeed. See
-      `plans/PM-notes.md`.
+      `main`).
+- [x] A live demo is deployed to GitHub Pages — **live** at
+      https://AntonLapshin.github.io/showcase/ (Pages enabled, deploy workflow
+      green, HTTP 200).
 - [x] `src/core/**` holds 100% test coverage (gate in `vite.config.ts`; green in
       CI and locally).
 
 ## Progress check (Slice 01)
 
-- Issues reflect the plan: **#1** core engine, **#2** thin UI, **#3** demo +
-  packaging prep — all open, batched, ready to implement in order. Slice 01
-  code is **not yet implemented** (no PRs merged).
+- **Complete.** Issues **#1** core engine, **#2** thin UI, **#3** demo +
+  packaging prep all implemented and merged (PRs #4, #5, #7). CI green, 100%
+  core coverage, build passes, Pages demo live, README demo link present.
+  npm publishing remains a manual follow-up by the owner.

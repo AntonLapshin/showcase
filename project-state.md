@@ -4,47 +4,54 @@
 
 ## Status
 
-**Scaffolded / Slice 01 planned** — the React + Tailwind + TypeScript skeleton is
-in place and `npm install && npm test && npm run build` pass. The next slice
-(Slice 01) implements the real showcase engine core and a live demo.
+**COMPLETE** — Slice 01 is fully implemented, merged, and verified. The
+lightweight Storybook-like showcase gallery is implemented, the GitHub Pages
+demo is live, and all done-definition criteria are met. The only remaining
+follow-up is manual npm publishing by the owner.
 
 ## What's here
 
-- Vite + React + TypeScript + Tailwind project scaffold.
+- Vite + React + TypeScript + Tailwind project.
 - Core/UI split with `src/core` (business logic) and `src/ui` (thin views).
 - Vitest with 100% coverage enforced on `src/core/**/*.ts`.
-- Initial scaffold demo panel (placeholder — to be replaced by the real
-  showcase gallery in Slice 01).
+- Showcase engine core (`src/core/showcase.ts`): registry, selection,
+  expand/collapse, and URL encode/decode — pure, router-agnostic, 100% covered.
+- Thin showcase UI (`src/ui`): `Showcase` gallery (sidebar, breadcrumbs, canvas),
+  `useShowcase` view model with `window.history`/`popstate` URL sync, and three
+  sample showcase files (Button, Spinner, Badge).
+- Demo root mounts the showcase gallery directly.
+- README with usage, "how to add a showcase file", and live-demo link.
+- `package.json` library-entry prep (peer deps, `files`, `exports`, `build:lib`)
+  ready for a manual `npm publish`.
 - CI (`ci.yml`) and GitHub Pages (`deploy-pages.yml`) workflows.
 
-## Next slice — Slice 01 (see `plans/slice-01.md`)
+## Slice 01 — COMPLETE
 
-> Implementation-ready. Issues **#1–#3** are open, batched (max 3), labeled
-> `pi:ready` (with `size`, `type:feature`, `milestone:m1`, and `pi:issue-id`
-> markers M1-T1/T2/T3 for idempotency), and ready for the Engineer to pick up
-> in order #1 → #2 → #3. Latest PM notes: `plans/PM-notes.md`.
+All three Slice 01 issues merged:
 
-Extract a lightweight, Storybook-like component gallery from
-`ws/natalies-corner/web/src/showcase` into this standalone package:
-
-- [ ] Pure core showcase engine in `src/core` (registry, selection,
-      expand/collapse, URL encode/decode) with 100% coverage.
-- [ ] Thin showcase UI + view model + window-history URL sync + sample demo
-      showcase files.
-- [ ] Demo polish + README (usage + "add a showcase") + library-entry prep in
-      `package.json`.
+- **#1** core showcase engine (`src/core`) — merged via PR #4.
+- **#2** thin showcase UI + view model + URL sync + sample showcases — merged
+  via PR #5.
+- **#3** demo polish + README + library-entry prep — merged via PR #7.
 
 ## CI / Pages status
 
-- ✅ CI green on `main` (`13924d0`): lint, test:coverage (100% core), and build
-  all pass in CI.
-- 🚧 GitHub Pages deploy is **failing** — `actions/configure-pages` reports
-  "Pages site not found / your current plan does not support GitHub Pages for
-  this repository." The repo is **private** with Pages **not enabled**.
-  **Blocked on human action**: enable Pages in repo Settings → Pages, or make
-  the repo public. See `plans/PM-notes.md`.
+- ✅ CI green on `main`: lint, test:coverage (100% core), and build all pass.
+- ✅ GitHub Pages demo **live** at https://AntonLapshin.github.io/showcase/
+  (HTTP 200; Pages enabled, `build_type: workflow`, deploy workflow green).
 
-## Done
+## Done (done-definition verified 2026-08-21)
 
-- [x] `npm install && npm test && npm run build` pass locally (baseline verified).
-- [x] `npm install && npm test && npm run build` pass in CI (`ci.yml`).
+- [x] All milestones complete (Slice 01 merged via PRs #4, #5, #7).
+- [x] No open issues (0) and no open PRs (0).
+- [x] CI passes — latest CI run on `main` is success.
+- [x] Tests pass — `npm test`: 36 tests green.
+- [x] Core coverage 100% — `npm run test:coverage`: 100% on `src/core/**`.
+- [x] Build succeeds — `npm run build` produces a working bundle.
+- [x] Pages deployed — demo URL live (HTTP 200).
+- [x] README demo URL present.
+- [x] Changelog + project-state current.
+
+## Remaining (manual, owner)
+
+- npm publishing of the package (owner publishes manually; prep is in place).
